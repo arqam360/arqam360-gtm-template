@@ -516,11 +516,10 @@ const setDefaultConsentState = require('setDefaultConsentState');
 const setInWindow = require('setInWindow');
 const updateConsentState = require('updateConsentState');
 
-// TODO(arqam360): Google issues a developer ID to CMP vendors. Once it has
-// been issued, put it here (without the "developer_id." prefix) AND add
-// "developer_id.<id>" to the write_data_layer permission. While it is empty
-// the template sets no developer ID.
-const DEVELOPER_ID = '';
+// Google-issued developer ID for Arqam360 (CMP Partner Program, issued
+// 2026-10-02). Sent with gtagSet; "developer_id.dODUxYz" is in the
+// write_data_layer permission below.
+const DEVELOPER_ID = 'dODUxYz';
 
 const WIDGET_URL = 'https://cdn.arqam360.com/widget-v2.js';
 const CONSENT_COOKIE = 'consentiq_consent';
@@ -928,6 +927,10 @@ ___WEB_PERMISSIONS___
               {
                 "type": 1,
                 "string": "url_passthrough"
+              },
+              {
+                "type": 1,
+                "string": "developer_id.dODUxYz"
               }
             ]
           }
@@ -1144,6 +1147,11 @@ scenarios:
     runCode(mockData);
 
     assertApi('gtagSet').wasCalledWith({ ads_data_redaction: true, url_passthrough: true });
+- name: Sends the Google-issued developer ID
+  code: |-
+    runCode(mockData);
+
+    assertApi('gtagSet').wasCalledWith('developer_id.dODUxYz', true);
 - name: Passes the banner language in the script URL
   code: |-
     mockData.language = 'ar';
