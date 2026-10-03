@@ -1,6 +1,8 @@
 homepage: "https://arqam360.com"
 documentation: "https://arqam360.com/help/installation/google-tag-manager-consent-mode"
 versions:
+  - sha: 993cc0c4d5a64fbbd67c441fee40b3cb5bdfbe9d
+    changeNotes: Fixes a permission (read+write on the consent hook) so the banner loads.
   - sha: b2440a42aab05273a2bb4b8c45e4661462d8f3e3
     changeNotes: Sends the Google-issued CMP developer ID.
   - sha: 6cd3216a3b688ec2286e271110973868bba1e81c
