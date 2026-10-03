@@ -1,0 +1,5 @@
+homepage: "https://arqam360.com"
+documentation: "https://arqam360.com/help/installation/google-tag-manager-consent-mode"
+versions:
+  - sha: 6cd3216a3b688ec2286e271110973868bba1e81c
+    changeNotes: Initial release.
